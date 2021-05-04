@@ -1,0 +1,17 @@
+name: gmailctl
+version: '0.1'
+summary: Tool to generate and maintain Gmail filters in a declarative way
+description: Tool to generate and maintain Gmail filters in a declarative way
+
+grade: stable
+base: core20
+
+parts:
+  gmailctl:
+    plugin: go
+    source-type: git
+    source: https://github.com/gjolly/gmailctl/archive/refs/heads/snap/master.zip
+
+apps:
+  gmailctl:
+    command: bin/gmailctl

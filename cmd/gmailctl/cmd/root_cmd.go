@@ -62,6 +62,8 @@ func init() {
 func initConfig() {
 	if cfgDir != "" {
 		// Use config file from the flag.
+	} else if snapDir, isSnap := os.LookupEnv("SNAP_USER_DATA"); isSnap {
+		cfgDir = path.Join(snapDir, ".gmailctl")
 	} else {
 		// Find home directory.
 		usr, err := user.Current()
