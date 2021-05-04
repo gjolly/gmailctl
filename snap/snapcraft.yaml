@@ -14,7 +14,7 @@ parts:
     source: https://github.com/gjolly/gmailctl.git
     override-pull: |
       snapcraftctl pull
-      last_committed_tag="$(git for-each-ref --sort=taggerdate --format '%(tag)' refs/tags | tail -n 1)"
+      last_committed_tag="$(git describe --tags --abbrev=0)"
       git checkout "${last_committed_tag}"
       snapcraftctl set-version "$(git describe --tags)"
 
