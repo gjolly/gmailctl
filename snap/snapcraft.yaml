@@ -1,6 +1,6 @@
 name: gmailctl
-version: git
 confinement: strict
+adopt-info: gmailctl
 summary: Tool to generate and maintain Gmail filters in a declarative way
 description: Tool to generate and maintain Gmail filters in a declarative way
 
@@ -12,6 +12,7 @@ parts:
     plugin: go
     source-type: git
     source: https://github.com/gjolly/gmailctl.git
+    source-branch: snap/master
     override-pull: |
       snapcraftctl pull
       last_committed_tag="$(git describe --tags --abbrev=0)"
