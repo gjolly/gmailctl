@@ -1,6 +1,15 @@
 name: gmailctl
 confinement: strict
 
+# Where do we build what do we build
+architectures:
+  - build-on: amd64
+    build-for: amd64
+  - build-on: [arm64, amd64]
+    build-for: arm64
+  - build-on: [riscv64, amd64]
+    build-for: riscv64
+
 # Use the git version generated during gmailctl part
 adopt-info: gmailctl
 
@@ -13,7 +22,7 @@ description: |
 license: MIT
 
 grade: stable
-base: core20
+base: core22
 
 parts:
   # Because Go do not rely on $HOME to find the user's home folder
@@ -39,6 +48,7 @@ parts:
       editor-wrapper.sh: usr/bin/editor-wrapper
   gmailctl:
     plugin: go
+    build-snaps: [go/latest/stable]
     source-type: local
     source: .
     override-pull: |
